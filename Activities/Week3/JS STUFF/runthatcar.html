@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>My First Object</title>
+  </head>
+  <body>
+  <p> Mileage: <span id="currentMileage">...</span> </p>
+  <p> Color: <span id="currentColor">...</span> </p>
+  <p> Car Working?: <span id="isCarWorking">...</span> </p>
+
+
+
+
+    <script>
+
+      var car = {
+        make: "Honda",
+        model: "Fit",
+        color: "Blue Raspberry",
+        mileage: 3000,
+        isWorking: true,
+
+        driveToWork: function() {
+
+          alert("Old Mileage: " + this.mileage);
+
+          this.mileage = this.mileage + 8;
+
+          alert("New mileage: " + this.mileage);
+        },
+
+        driveAroundWorld: function() {
+
+          alert("Old Mileage: " + this.mileage);
+
+          this.mileage = this.mileage + 24000;
+
+          alert("New Mileage: " + this.mileage);
+          alert("Car needs a tuneup!");
+
+          this.isWorking = false;
+        },
+
+        getTuneUp: function() {
+          alert("Car is ready to go!");
+          this.isWorking = true;
+        },
+
+        honk: function() {
+          alert("Honk! Honk!");
+        }
+      };
+
+      document.onkeyup = function (event){
+      var keyHit = event.key;
+      runCar(keyHit);
+    } 
+
+      function runCar (keyHit) {
+          if(keyHit == "w") {
+            car.driveToWork();
+            
+          } else if (keyHit == "a"){
+            car.driveAroundWorld();
+
+          } else if (keyHit == "s"){
+            car.getTuneUp();
+
+          } else if (keyHit == "c"){
+            car.color = prompt("Choose new Color");
+
+          } else if (keyHit =="d") {
+            car.honk();
+
+          } else {
+          alert("invalid key. valid game keys are w,a,s,d")
+        }
+        reWriteStats();
+        document.getElementById("currentMileage").innerHTML = car.mileage;
+        document.getElementById("currentColor").innerHTML = car.color;
+        document.getElementById("isCarWorking").innerHTML = car.isWorking;
+      }
+
+      function reWriteStats(){
+        console.log(car.make);
+        console.log(car.model);
+        console.log(car.color);
+      }
+
+
+    </script>
+    
+  </body>
+</html> 
